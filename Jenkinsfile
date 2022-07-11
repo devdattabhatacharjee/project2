@@ -33,6 +33,9 @@ pipeline {
             }
         }
         stage('CanaryDeploy') {
+            environment { 
+                CANARY_REPLICAS = 1
+            }
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
